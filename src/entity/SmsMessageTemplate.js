@@ -20,7 +20,16 @@ module.exports = (sequelize,DataTypes)=>{
             }
         },
         {
-            tableName : 'sms_message_template'
+            tableName : 'sms_message_template',
+            indexes:[
+                {
+                  fields:['template_code'],
+                  unique: true
+                },
+                {
+                    fields:['template_type']
+                }
+               ]
         }
     );
 

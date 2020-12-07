@@ -21,18 +21,32 @@ module.exports = (sequelize,DataTypes)=>{
             },
             otp_expired_date:{
                 type:DataTypes.DATE
-            },
-            created_date:{
-                type:DataTypes.DATE,
-                defaultValue: sequelize.fn('now')
             }
         },{
-            tableName : 'sms_otp'
+            tableName : 'sms_otp',
+            indexes:[
+                {
+                  fields:['target_mobile_number']
+                },
+                {
+                    fields:['otp_ref_number']
+                },
+                {
+                    fields:['otp_number']
+                },
+                {
+                    unique: true,
+                    fields:['otp_number','otp_ref_number']
+                },
+                {
+                    fields:['otp_expired_date']
+                }
+            ]
         }
     );
 
     model.associate = models =>{
-        model.belongsTo(models.SmsMessageTrans,{foreignKey : 'trans_id'});
+        model.belongsTo(models.SmsMessageTrans,{foreignKey : {name : 'trans_id' , allowNull: false}} );
     };
 
     return model;

@@ -21,7 +21,18 @@ module.exports = (sequelize,DataTypes)=>{
             }
         },
         {
-            tableName : 'sms_credit_log'
+            tableName : 'sms_credit_log',
+            indexes:[
+                {
+                  fields:['credit_trans_date']
+                },
+                {
+                    fields:['credit_type']
+                },
+                {
+                    fields:['is_active']
+                }
+            ]
         }
     );
 

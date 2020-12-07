@@ -27,12 +27,26 @@ module.exports  = (sequelize,DataTypes)=>{
                 defaultValue: 'waiting'
             }
         },{
-            tableName : 'sms_message_trans'
+            tableName : 'sms_message_trans',
+            indexes:[
+                {
+                  fields:['message_type']
+                },
+                {
+                    fields:['sender_name']
+                },
+                {
+                    fields:['mobile_number']
+                },
+                {
+                    fields:['sending_status']
+                }
+               ]
         }
     );
 
     model.associate = models=>{
-        model.hasOne(models.SmsOtp,{foreignKey : 'trans_id'});
+        model.hasOne(models.SmsOtp,{foreignKey : {name : 'trans_id' , allowNull: false}});
         model.hasOne(models.SmsCreditLog,{foreignKey : 'trans_id'});
     };
 
