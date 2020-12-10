@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const testRoute = require('./test');
+const smsRoute = require('./smsRoute');
+const otpRoute = require('./otpRoute');
 
-router.use('/test',testRoute);
-
+router.use('/sms',smsRoute);
+router.use('/otp',otpRoute);
 
 module.exports = router;
