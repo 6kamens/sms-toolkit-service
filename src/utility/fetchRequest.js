@@ -36,7 +36,7 @@ module.exports.postDataJson = async function postData(url = '', data = {}) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-        body:JSON.stringify(data) 
+        body:data
       });
     
       return response.text(); 

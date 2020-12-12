@@ -5,4 +5,5 @@ const smsController = require('../controllers/smsController');
 router.post('/send-sms',smsController.sendSmsValidate('sendSms'), smsController.sendSms);
 
 
+
 module.exports = router;

@@ -47,7 +47,6 @@ module.exports  = (sequelize,DataTypes)=>{
 
     model.associate = models=>{
         model.hasOne(models.SmsOtp,{foreignKey : {name : 'trans_id' , allowNull: false}});
-        model.hasOne(models.SmsCreditLog,{foreignKey : 'trans_id'});
     };
 
     return model;
