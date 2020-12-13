@@ -51,7 +51,8 @@ module.exports.sendOtp = async (req,res)=> {
             otpNumber : otpGen,
             bodyMessage:messageOtp,
             senderName: process.env.THAI_BULK_SMS_SENDER || 'TESTER',
-            mobileNo : req.body.mobileNo
+            mobileNo : req.body.mobileNo ,
+            sendingStatus : 'success'
         });
 
         if(!insertDb) return res.json({status:false,message:'error save db'});

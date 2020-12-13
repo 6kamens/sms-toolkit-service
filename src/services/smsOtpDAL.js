@@ -27,7 +27,8 @@ module.exports.insertNewOtp = async (request)=>{
         title_message: '',
         body_message : request.bodyMessage,
         sender_name : request.senderName,
-        mobile_number : request.mobileNo
+        mobile_number : request.mobileNo,
+        sending_status:request.sendingStatus
     },{transaction:t});
 
     const saveOtp = await db.SmsOtp.create({

@@ -29,7 +29,8 @@ module.exports.sendSms = async (req,res) =>{
             titleMessage: req.body.titleMessage,
             bodyMessage:req.body.message,
             senderName: process.env.THAI_BULK_SMS_SENDER || 'TESTER',
-            mobileNo : req.body.mobileNo
+            mobileNo : req.body.mobileNo,
+            sendingStatus : 'success'
         });
 
 

@@ -1,6 +1,5 @@
-const { request } = require("express");
 const smsMessageTemplateDAL = require('../services/smsMessageTemplateDAL');
-const { check ,body, validationResult } = require('express-validator');
+const { check , validationResult } = require('express-validator');
 
 
 module.exports.smsTemplateValidate = (method)=>{
