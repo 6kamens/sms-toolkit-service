@@ -41,10 +41,14 @@ module.exports.sendOtp = async (req,res)=> {
         let messageOtp = getTemplate.template_body_message.replace("{OTP_NO}", otpGen);
         messageOtp = messageOtp.replace("{OTP_REF}", otpRefGen);
 
+        //change third party sms service here
         const sendOtp = await thirdPartySmsService.sendSms({
             mobileNo : req.body.mobileNo,
             message: messageOtp
         });
+
+        //check the result before next
+        //if(sendOtp.status == false) return res.json({status:false,message:sendOtp});
 
         const insertDb = await smsOtpDAL.insertNewOtp({
             otpRef : otpRefGen,
@@ -58,8 +62,7 @@ module.exports.sendOtp = async (req,res)=> {
         if(!insertDb) return res.json({status:false,message:'error save db'});
 
         return res.json({status:true,message:'success',data:{
-            otpRef : otpRefGen,
-            otp:sendOtp
+            otpRef : otpRefGen
         }});
 
     } catch (error) {
