@@ -15,8 +15,8 @@ module.exports.otpValidate = (method)=>{
         case 'confirmOtp': return [
             check('mobileNo').not().isEmpty().withMessage('mobileNo is required')
             .isMobilePhone().withMessage('mobileNo must be mobile phone'),
-            check('refOtp').isInt().withMessage('refOtp must be number').isLength({min:6 , max: 6}).withMessage('invalid length : 6'),
-            check('confirmOtp').isInt().withMessage('confirmOtp must be number').isLength({ min:5 , max: 5 }).withMessage('invalid length : 5'),
+            check('refOtp').isInt().withMessage('refOtp must be number').isLength({min:5 , max: 5}).withMessage('invalid length : 6'),
+            check('confirmOtp').isInt().withMessage('confirmOtp must be number').isLength({ min:6 , max: 6 }).withMessage('invalid length : 5'),
         ];
         default: return [];
     }

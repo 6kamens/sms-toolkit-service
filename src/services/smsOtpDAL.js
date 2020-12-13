@@ -9,7 +9,7 @@ module.exports.confirmOtp = async (mobileNo,otp,otpRef) => {
             [Op.and]: [{target_mobile_number:mobileNo},
                 {otp_number:otp},
                 {otp_ref_number:otpRef},
-                {otp_expired_date : { [Op.lt]: Date.now() } }]
+                {otp_expired_date : { [Op.gt]: Date.now() } }]
         },
         attributes:["id"]
     }
